@@ -1,0 +1,12 @@
+uuid: 7cd24225-620f-4dc3-8e67-d20e1b03cb70
+author: Joshua Andersson
+license: cc by-sa
+type: scoring
+
+validation: custom interactive score
+
+grading:
+    show_test_data_groups: yes
+
+limits:
+    time_multiplier: 2
