@@ -16,6 +16,7 @@ int main(int argc, char **argv) {
 
 	string phase;
 	judge_in >> phase;
+	cout << phase << endl;
 	if (phase == "encode") {
 		string goal;
 		string forbid;
@@ -27,18 +28,18 @@ int main(int argc, char **argv) {
 		{
 			cout << c << endl;
 			char resp;
-			if (!cin >> resp) wrong_answer("EOF");
-			if (!(c=='0' || c=='1' || c=='2' || c=='3')) wrong_answer("Invalid character in guess");
-
+			if (!(cin >> resp)) wrong_answer("EOF");
+			if (!(resp=='0' || resp=='1' || resp=='2' || resp=='3')) wrong_answer("Invalid character in guess");
+			if (resp==c) wrong_answer("Game same as forbidden");
 			user_send += resp;
 		}
 		std::ostringstream goalfilename;
-		fname << feedbackdir << '/' << "goal";
+		goalfilename << feedbackdir << '/' << "goal";
 		ofstream goalfile(goalfilename.str());
 		goalfile << goal << endl;
 
 		std::ostringstream nextpassname;
-		fname << feedbackdir << '/' << "nextpass.in";
+		nextpassname << feedbackdir << '/' << "nextpass.in";
 		ofstream nextpass(nextpassname.str());
 		nextpass << "decode" << endl;
 		nextpass << user_send << endl;
@@ -46,7 +47,7 @@ int main(int argc, char **argv) {
 	else
 	{
 		std::ostringstream goalfilename;
-		fname << feedbackdir << '/' << "goal";
+		goalfilename << feedbackdir << '/' << "goal";
 		ifstream goalfile(goalfilename.str());
 		string goal;
 		goalfile >> goal;
@@ -55,7 +56,7 @@ int main(int argc, char **argv) {
 		judge_in >> sent;
 		cout << sent << endl;
 		string ans;
-		if (!cin >> ans) wrong_answer("EOF");
+		if (!(cin >> ans)) wrong_answer("EOF");
 		if (goal != ans) wrong_answer("found wrong hidden string");
 	}
     accept();

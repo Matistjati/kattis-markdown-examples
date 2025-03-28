@@ -168,8 +168,7 @@ range: 0 $TOTAL_SCORE
 grader_flags: first_error accept_if_any_accepted" > secret/testdata.yaml
   echo "on_reject: continue
 range: 0 $TOTAL_SCORE
-grader_flags: ignore_sample
-grading: custom" > testdata.yaml
+grader_flags: ignore_sample" > testdata.yaml
 }
 
 # Solve a test case using the solution
