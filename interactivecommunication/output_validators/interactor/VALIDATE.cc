@@ -26,6 +26,7 @@ int main(int argc, char **argv) {
 		cout << goal << endl;
 		for (auto c : forbid)
 		{
+			// nom-intelligent forbid
 			cout << c << endl;
 			char resp;
 			if (!(cin >> resp)) wrong_answer("EOF");

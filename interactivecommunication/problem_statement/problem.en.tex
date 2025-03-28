@@ -1,92 +1,25 @@
-\problemname{Crack the Password}
+\problemname{Interactive Communication}
 
-Disaster! The programming olympiad final has started, but you've forgotten the login to your computer.
-Luckily, you're not a sheep following the flock. You refuse to use Windows and instead use Progolymp-OS.
-If you forget your password in this operating system, you receive clues when you make a guess.
-More specifically, assume that the password is $P$, and you guess $G$. The system will respond with
+Your solution will be run in two stages. The stages are independent and you cannot pass information between them.
 
-$$LCS(G,P)$$
+In stage 1, you are given a binary string of length $N$ that you want to communicate to stage 2. To do this, you can send 
+number $0-3$ inclusive. You have to send them one by one, and before each one, the judge will arbitrarily disallow sending
+one of the the 4 available numbers.
 
-where $LCS(G,P)$ is the length of the longest common subsequence of $G$ and $P$. The longest common
-subsequence of two strings $G$ and $P$ is defined as follows: let's denote all subsequences of
-a string $S$ by the set of all strings that can be obtained by removing zero or more letters
-from $S$ while maintaining the relative order of the remaining letters. $LCS(G,P)$ is the length of the longest
-string that appears in both the subsequences of $G$ and $P$.
+First, read string, which is either \texttt{encrypt} or \texttt{decrypt}. If it's \texttt{encrypt}, your program
+is being run in stage 1, otherwise stage 2.
 
-For example: if $P=$''\texttt{abc}'', its subsequences are \{'''', ''\texttt{a}'', ''\texttt{b}'', ''\texttt{c}'',
-''\texttt{ab}'', ''\texttt{ac}'', ''\texttt{bc}'', ''\texttt{abc}''\}.
-If $G=$''ac'', its subsequences are \{'''', ''\texttt{a}'', ''\texttt{c}'', ''\texttt{ac}''\}. The longest common subsequence
-is ''\texttt{ac}'', and thus $LCS(G,P)=2$.
+\section*{Stage 1}
+Read a string, the binary string you have to communicate. Assume it consists of $N$ characters.
+Then, $N$ times, do the following:
+\begin{itemize}
+  \item Read one character $c$ on one line. This is the disallowed character.
+  \item Send some character not equal to $c$. Remember to send a newline and flush afterwards.
+\end{itemize}
 
-A few more examples: the longest common subsequence of ''\texttt{aggtab}'' and ''\texttt{gxtxayb}'' is ''\texttt{gtab}''. Therefore,
-$LCS($''\texttt{aggtab}'', ''\texttt{gxtxayb}''$) = 4$. Two more examples are $LCS($''\texttt{abc}'', ''\texttt{cba}''$) = 1$ and 
-$LCS($''\texttt{po}'', ''\texttt{trakigt}''$) = 0$.
+\section*{Stage 2}
+Read a string. This will be equal to what your program outputted during stage 1. Your program
+has to use this string to figure out what the original binary string was in stage 1. 
 
-You can now make up to 10,000 guesses before the system locks up. Each guess consists of giving your computer $G$, and it
-responds with $LCS(G,P)$. Additionally, you want to use as few guesses as possible so you can get back into the competition as soon as possible.
-
-\section*{Interaction}
-Your program should first read two integers $N$ and $K$ ($1 \leq N \leq 100$, $1 \leq K \leq 26$): the number of letters in the password and
-how many unique letters it can contain.
-More specifically, the password $P$ consists of exactly $N$ letters chosen from the first $K$ lowercase letters of the alphabet.
-
-To make a guess, you should print a line in the format \texttt{? G}. $G$ must satisfy $1 \le |G| \le N$
-and only contain letters from the first $K$ lowercase letters of the alphabet. ($1 \le |G| \le N$),
-The program will then read an integer, $LCS(G,P)$.
-
-When making your final guess, print a line with the character \texttt{!}, followed by a string of length $N$,
-your guess of the password. After this, your program should terminate and no more output should be written.
-This final guess does not count toward the limit of 10,000 guesses.
-
-It is guaranteed that the string $P$ in each test case is determined in advance and does not change adaptively in response to your measurements.
-There are no guarantees on $P$ such as it being a real word or anything like that, as it is a strong password. 
-
-Make sure to flush the output after \textbf{every print statement}, otherwise you may get a \textit{Time Limit Exceeded}.
-In C++, this can be done for example with \texttt{cout << flush;} or \texttt{fflush(stdout);},
-in Python this is done automatically when you use \texttt{input()}, but otherwise you need to use \texttt{sys.stdout.flush()},
-and in Java with \texttt{System.out.flush();}.
-
-\section*{Scoring}
-Your solution will be tested on a number of test case groups. If you fail to
-find the password in any test case, you will receive zero points for the group it belongs to. Otherwise, let
-$g$ be the largest number of guesses you used to find the passwords in a certain test case group.
-If the group is worth $P$ points, you will get
-
-$$\left \lfloor{P \cdot \min(1, \frac{666}{g})}\right \rfloor $$
-
-points for that group. You will receive 100 points for the entire problem if you never use more than 666 guesses for a test case.
-
-The table below shows the value of $\frac{666}{g}$ rounded down for different numbers of guesses.
-
-\begin{center}
-  \noindent
-  \begin{tabular}{| l | l |}
-    \hline
-    $\frac{666}{g}$ & $g$ \\ \hline
-    $1$             & $666$ \\ \hline
-    $0.9$           & $740$ \\ \hline
-    $0.8$           & $832$ \\ \hline
-    $0.7$           & $951$ \\ \hline
-    $0.6$           & $1110$ \\ \hline
-    $0.5$           & $1332$ \\ \hline
-    $0.4$           & $1665$ \\ \hline
-    $0.3$           & $2220$ \\ \hline
-    $0.2$           & $3330$ \\ \hline
-    $0.1$           & $6660$ \\ \hline
-  \end{tabular}
-\end{center}
-  
-For the following test case groups:
-
-\noindent
-\begin{tabular}{| l | l | p{12cm} |}
-  \hline
-  \textbf{Group} & \textbf{Points} & \textbf{Constraints} \\ \hline
-  $1$    & $15$       & $N = 50, K = 2$ \\ \hline
-  $2$    & $15$       & $N = 30, K = 3$ \\ \hline
-  $3$    & $70$       & $N = 100, K \leq 26$ \\ \hline
-\end{tabular}
-
-\section*{Explanation of Sample 1}
-The secret password is \texttt{bbacba}. Note that the interaction does not show a reasonable strategy,
-but only demonstrates the format.
+Thus, print a binary string of length $N$. If it matches the one given in stage 1, your program
+has solved the testcase.
