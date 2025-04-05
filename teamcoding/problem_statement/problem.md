@@ -1,4 +1,3 @@
-# C. Team Coding
 
 | Problem Name | Team Coding |
 | --- | --- |

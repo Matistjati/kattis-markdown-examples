@@ -47,7 +47,7 @@ Help the researchers compute
 You should implement the following procedure.
 
 ```
-std::vector&lt;int&gt; ucs(std::vector&lt;int&gt; A, std::vector&lt;int&gt; B)
+std::vector<int&gt; ucs(std::vector&lt;int&gt; A, std::vector&lt;int&gt; B)
 ```
 
 * $A$: array of length $N$ describing the first sequence.
