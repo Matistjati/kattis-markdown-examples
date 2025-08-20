@@ -1,0 +1,15 @@
+problem_format_version: 2023-07
+name: Interactive Communication
+uuid: e9eee278-1425-4041-9249-f6dce5b28273
+credits:
+    authors: Joshua Andersson
+license: cc by-sa
+type:
+    - multi-pass
+    - scoring
+
+grading:
+    show_test_data_groups: yes
+
+time_multipliers:
+    ac_to_time_limit: 2

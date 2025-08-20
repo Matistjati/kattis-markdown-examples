@@ -6,6 +6,15 @@ for folder in */; do
     if [[ "$folder" == "output/" ]]; then
         continue
     fi
+    if [[ "$folder" == "interactivecommunication/" ]]; then
+        continue
+    fi
+    if [[ "$folder" == "testing/" ]]; then
+        continue
+    fi
+    if [[ "$folder" == "testdata_tools/" ]]; then
+        continue
+    fi
 
     echo "Processing $folder"
     mkdir output/$folder

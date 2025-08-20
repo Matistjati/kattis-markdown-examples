@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="None">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Linux version 5.6.0">
+  <title>Guess the Number</title>
+  <link rel="stylesheet" href="problem.css">
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: { 
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']],
+        },
+  MMLorHTML: {
+    prefer: {Firefox: "HTML"}
+    }
+  });
+  </script>
+  <script type="text/javascript" src=
+  "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+  <div class="problemheader">
+    <h1>Guess the Number</h1>
+    <h3>Problem ID: guess</h3>
+  </div>
+  <div class="problembody">
+    <p>Jag tänker på ett hemligt tal mellan <span>\(1\)</span> and
+    <span>\(100\)</span>, kan du gissa vilket? Givet en gissning
+    kommer jag att berätta om din gissning var för stor, för liten
+    eller rätt. Du får bara <span>\(10\)</span> gissningar, använd
+    dem klokt!</p>
+    <h2>Interaktion</h2>
+    <table class="sample" summary="sample data">
+      <tr>
+        <th style="text-align:left; width:33%;">Read</th>
+        <th style="text-align:center; width:33%;">Sample
+        Interaction 1</th>
+        <th style="text-align:right; width:33%;">Write</th>
+      </tr>
+    </table>
+    <div class="sampleinteractionwrite">
+      <pre>792
+</pre>
+    </div>
+    <div class="sampleinteractionread">
+      <pre>higher
+</pre>
+    </div>
+    <div class="sampleinteractionwrite">
+      <pre>999
+</pre>
+    </div>
+    <div class="sampleinteractionread">
+      <pre>lower
+</pre>
+    </div>
+    <div class="sampleinteractionwrite">
+      <pre>990
+</pre>
+    </div>
+    <div class="sampleinteractionread">
+      <pre>higher
+</pre>
+    </div>
+    <div class="sampleinteractionwrite">
+      <pre>995
+</pre>
+    </div>
+    <div class="sampleinteractionread">
+      <pre>correct
+</pre>
+    </div>
+    <table class="sample" summary="sample data">
+      <tr>
+        <th style="text-align:left; width:33%;">Read</th>
+        <th style="text-align:center; width:33%;">Sample
+        Interaction 2</th>
+        <th style="text-align:right; width:33%;">Write</th>
+      </tr>
+    </table>
+    <div class="sampleinteractionwrite">
+      <pre>42
+</pre>
+    </div>
+    <div class="sampleinteractionread">
+      <pre>correct
+</pre>
+    </div>Ditt program ska skriva ut gissningar om talet. En
+    gissning är en rad som enbart innehåller ett heltal mellan
+    <span>\(1\)</span> och <span>\(1000\)</span>. Efter varje
+    gissning måste du flusha standard out.
+    <p>Efter varje gissning kan du läs svaret på standard in. Detta
+    svar är ett av tre ord:</p>
+    <ul>
+      <li><code>lower</code> om talet jag tänker på är lägre än din
+      gissning,</li>
+      <li><code>higher</code> om talet jag tänker på är högre än
+      din gissning, eller</li>
+      <li><code>correct</code> om din gissning är korrekt.</li>
+    </ul>
+    <p>Efter att ha gissat rätt ska du avsluta ditt program. Om du
+    gissar fel <span>\(10\)</span> gånger får du inga fler chanser
+    och ditt program kommer avbrytas.</p>
+  </div>
+</body>
+</html>
